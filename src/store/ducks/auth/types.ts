@@ -14,8 +14,7 @@ export enum AuthTypes {
 
 export interface AuthState {
   user: IUser;
-  accessToken: string;
-  refreshToken: string;
   loading: boolean;
   error: boolean;
+  signedIn: boolean;
 }

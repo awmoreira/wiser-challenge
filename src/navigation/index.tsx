@@ -10,10 +10,10 @@ import Unlogged from './Unlogged';
 const Stack = createStackNavigator();
 
 const Main: React.FC = () => {
-  const {accessToken} = useSelector((state: RootState) => state.auth);
+  const {signedIn} = useSelector((state: RootState) => state.auth);
   return (
     <Stack.Navigator initialRouteName={Routes.UNLOGGED}>
-      {accessToken ? (
+      {signedIn ? (
         <Stack.Screen
           name={Routes.LOGGED}
           component={Logged}
@@ -29,7 +29,7 @@ const Main: React.FC = () => {
           options={{
             headerShown: false,
             gestureEnabled: false,
-            animationTypeForReplace: accessToken ? 'push' : 'pop',
+            animationTypeForReplace: signedIn ? 'push' : 'pop',
           }}
         />
       )}

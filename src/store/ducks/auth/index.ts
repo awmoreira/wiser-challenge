@@ -1,13 +1,11 @@
 import {Reducer} from 'redux';
-import {IUser} from '~/types/IUser';
-import {AuthState, AuthTypes} from './types';
+import {AuthState, AuthTypes, IUser} from './types';
 
 const INITIAL_STATE: AuthState = {
   user: {} as IUser,
   error: false,
   loading: false,
-  accessToken: '',
-  refreshToken: '',
+  signedIn: false,
 };
 
 const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
@@ -24,8 +22,7 @@ const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         user: action.payload.data,
-        refreshToken: action.payload.refreshToken,
-        accessToken: action.payload.accessToken,
+        signedIn: true,
       };
 
     case AuthTypes.SIGN_IN_FAILURE:

@@ -2,6 +2,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
+import Toast from 'react-native-toast-message';
 import {Container, SubTitle, Title, TextButton, TextAlert} from './styles';
 
 import Routes from '~/navigation/routes';
@@ -19,6 +20,20 @@ const SignIn: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const {loading, error} = useSelector((state: RootState) => state.auth);
+
+  React.useEffect(() => {
+    if (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Erro',
+        text2: 'Usuário ou senha inválidos... 👋',
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 50,
+        bottomOffset: 40,
+      });
+    }
+  }, [error]);
 
   return (
     <Container>
@@ -63,12 +78,13 @@ const SignIn: React.FC = () => {
                 fontsize={16}
                 description="Entrar"
                 onPress={handleSubmit}
+                shadow
               />
             )}
-            {error && (
-              <TextAlert color="#EB5757">E-mail ou senha incorretos!</TextAlert>
-            )}
-            <TextButton onPress={() => navigation.navigate(Routes.LOGGED)}>
+
+            <Toast ref={(ref) => Toast.setRef(ref)} />
+
+            <TextButton onPress={() => navigation.navigate(Routes.UNLOGGED)}>
               Esqueceu seu login ou senha?
             </TextButton>
           </>

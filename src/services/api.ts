@@ -6,7 +6,7 @@ import axios from 'axios';
 //   : Config.PRODUCTION_API_URL;
 
 const api = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: 'https://602fbcb7a1e9d20017af0f4a.mockapi.io',
   //   baseURL: baseURLEnviroment,
 });
 

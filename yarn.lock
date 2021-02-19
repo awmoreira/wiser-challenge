@@ -5814,6 +5814,13 @@ react-native-screens@^2.17.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.17.1.tgz#c3c0ac750af48741c5b1635511e6af2a27b74309"
   integrity sha512-B4gD5e4csvlVwlhf+RNqjQZ9mHTwe/iL3rXondgZxnKz4oW0QAmtLnLRKOrYVxoaJaF9Fy7jhjo//24/472APQ==
 
+react-native-toast-message@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-native-toast-message/-/react-native-toast-message-1.4.7.tgz#7db334f1425036181b634e5bd032f81ac8c00320"
+  integrity sha512-MTY/n9z4XSqb/YHgUBcLUHJf0QQtnVKgPcw99BUqE3E2pAh2BOjO7C0UrC9SmjBvRz68o1FCfYox5yhwJBAvHQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native@0.63.4:
   version "0.63.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"

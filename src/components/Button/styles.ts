@@ -39,6 +39,16 @@ export const Container = styled.TouchableOpacity<IContainerProps>`
   opacity: ${({disabled}) => (disabled ? 0.5 : 1)};
 `;
 
+export const WrapperButton = styled.View`
+  shadow-color: #d8afe5;
+  shadow-offset: {
+    width: 0;
+    height: 2px;
+  }
+  shadow-opacity: 0.8;
+  shadow-radius: 8px;
+  elevation: 2;
+`;
 export const WrapperDescription = styled.View`
   justify-content: center;
   align-items: center;
