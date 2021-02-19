@@ -22,8 +22,8 @@ export const Icon = styled.Image`
 
 export const Touchable = styled.TouchableOpacity`
   position: absolute;
-  top: 45;
-  left: ${(props) => (props.theme.metrics.screenWidth < 375 ? 200 : 280)};
+  top: 40;
+  right: ${(props) => (props.theme.metrics.screenWidth < 375 ? 20 : 15)};
 `;
 
 export const IconRight = styled.Image``;

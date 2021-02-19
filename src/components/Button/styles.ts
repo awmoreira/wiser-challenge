@@ -41,10 +41,7 @@ export const Container = styled.TouchableOpacity<IContainerProps>`
 
 export const WrapperButton = styled.View`
   shadow-color: #d8afe5;
-  shadow-offset: {
-    width: 0;
-    height: 2px;
-  }
+  shadow-offset: 0px 10px;
   shadow-opacity: 0.8;
   shadow-radius: 8px;
   elevation: 2;

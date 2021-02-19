@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
 import Toast from 'react-native-toast-message';
-import {Container, SubTitle, Title, TextButton, TextAlert} from './styles';
+import {Container, SubTitle, Title, TextButton} from './styles';
 
 import Routes from '~/navigation/routes';
+import Images from '~/assets/images';
 
 import Input from '~/components/Input';
 import Button from '~/components/Button';
@@ -20,6 +21,7 @@ const SignIn: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const {loading, error} = useSelector((state: RootState) => state.auth);
+  const emailRef = useRef();
 
   React.useEffect(() => {
     if (error) {
@@ -48,6 +50,8 @@ const SignIn: React.FC = () => {
             <Title>Olá, seja bem-vindo!</Title>
             <SubTitle>Para acessar a plataforma, faça seu login.</SubTitle>
             <Input
+              ref={emailRef}
+              iconVisible={errors.email ? Images.Close : null}
               typeMask="custom"
               label="E-mail"
               touched={!!touched.email || !!values.email}
