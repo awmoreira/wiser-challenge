@@ -39,7 +39,7 @@ const Button: React.FC<IButtonProps> = ({
     <Background
       colors={[
         colors[type].button,
-        type === 'primary' ? '#1DC4E9' : colors[type].button,
+        type === 'primary' ? '#9D25B0' : colors[type].button,
       ]}
       size={size}
       style={style}>

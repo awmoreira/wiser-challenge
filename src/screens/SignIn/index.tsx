@@ -2,16 +2,8 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  Container,
-  Logo,
-  SubTitle,
-  Title,
-  TextButton,
-  TextAlert,
-} from './styles';
+import {Container, SubTitle, Title, TextButton, TextAlert} from './styles';
 
-import Images from '~/assets/images';
 import Routes from '~/navigation/routes';
 
 import Input from '~/components/Input';
@@ -36,50 +28,49 @@ const SignIn: React.FC = () => {
           dispatch(AuthActions.signInRequest(values));
         }}
         validationSchema={validationSchema}>
-        {(formikProps) => (
+        {({values, handleChange, handleSubmit, errors, touched}) => (
           <>
             <Title>Olá, seja bem-vindo!</Title>
             <SubTitle>Para acessar a plataforma, faça seu login.</SubTitle>
             <Input
               typeMask="custom"
               label="E-mail"
-              touched={
-                !!formikProps.touched.email || !!formikProps.values.email
-              }
-              placeholder="E-mail"
-              errors={formikProps.errors.email}
+              touched={!!touched.email || !!values.email}
+              placeholder="user.name@mail.com"
+              errors={errors.email}
               keyboardType="email-address"
-              onChangeText={formikProps.handleChange('email')}
-              value={formikProps.values.email}
+              onChangeText={handleChange('email')}
+              value={values.email}
+              typeInput={errors.email ? 'tertiary' : 'primary'}
             />
             <Input
               typeMask="custom"
               label="Senha"
-              touched={
-                !!formikProps.touched.password || !!formikProps.values.password
-              }
-              placeholder="Senha"
-              errors={formikProps.errors.password}
+              touched={!!touched.password || !!values.password}
+              placeholder="******"
+              errors={errors.password}
               secureTextEntry
-              onChangeText={formikProps.handleChange('password')}
-              value={formikProps.values.password}
+              onChangeText={handleChange('password')}
+              value={values.password}
+              typeInput={errors.email ? 'tertiary' : 'primary'}
             />
-            <TextButton onPress={() => navigation.navigate(Routes.LOGGED)}>
-              Esqueci minha senha!
-            </TextButton>
+
             {loading ? (
               <Loading />
             ) : (
               <Button
-                type="tertiary"
-                fontsize={12}
+                type="primary"
+                fontsize={16}
                 description="Entrar"
-                onPress={formikProps.handleSubmit}
+                onPress={handleSubmit}
               />
             )}
             {error && (
               <TextAlert color="#EB5757">E-mail ou senha incorretos!</TextAlert>
             )}
+            <TextButton onPress={() => navigation.navigate(Routes.LOGGED)}>
+              Esqueceu seu login ou senha?
+            </TextButton>
           </>
         )}
       </Formik>

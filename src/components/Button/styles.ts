@@ -20,14 +20,13 @@ export const Background = styled(LinearGradient).attrs({
   useAngle: true,
   angle: 225,
 })<IBackgroundProps>`
-  height: 42px;
+  height: 48px;
   width: ${({size}) => (size === 'large' ? '100%' : '48%')};
-  border-radius: 21px;
+  border-radius: 8px;
 `;
 export const Container = styled.TouchableOpacity<IContainerProps>`
   flex: 1;
   width: 100%;
-  height: 42px;
   height: 42px;
   padding: 0px 10px;
   padding-bottom: ${({theme, paddingBottom}) =>

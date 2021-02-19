@@ -31,7 +31,7 @@ export const IconRight = styled.Image``;
 export const Label = styled.Text`
   font-size: ${(props) =>
     props.theme.metrics.screenWidth < 375 ? '12px' : '14px'};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.primary.labelInput};
   font-family: ${({theme}) => theme.fonts.bold};
   line-height: 18px;
   margin-bottom: 5px;
@@ -43,6 +43,7 @@ interface InputProps {
 }
 
 export const Input = styled.TextInput<InputProps>`
+  height: 48px;
   font-size: ${({theme}) =>
     theme.metrics.screenWidth < 375 ? '12px' : '14px'};
   font-weight: 500;
@@ -55,7 +56,7 @@ export const Input = styled.TextInput<InputProps>`
       ? theme.colors.failure
       : theme.colors.primary.border};
   border-radius: 5px;
-  background-color: ${({theme}) => theme.colors.white};
+  background-color: ${({theme}) => theme.colors.primary.main};
   color: ${({theme, typeInput}) =>
     typeInput === 'secondary'
       ? theme.colors.secondary.textInput
@@ -65,6 +66,7 @@ export const Input = styled.TextInput<InputProps>`
 type IInputMask = InputProps;
 
 export const InputMask = styled(TextInputMask)<IInputMask>`
+  height: 48px;
   font-size: ${({theme}) =>
     theme.metrics.screenWidth < 375 ? '12px' : '14px'};
   font-weight: 500;
@@ -76,7 +78,7 @@ export const InputMask = styled(TextInputMask)<IInputMask>`
       ? theme.colors.failure
       : theme.colors.primary.border};
   border-radius: 5px;
-  background-color: ${({theme}) => theme.colors.white};
+  background-color: ${({theme}) => theme.colors.primary.main};
   color: ${({theme, typeInput}) =>
     typeInput === 'secondary'
       ? theme.colors.secondary.textInput
@@ -85,7 +87,7 @@ export const InputMask = styled(TextInputMask)<IInputMask>`
 
 export const WrapperError = styled.View`
   align-items: center;
-  height: 12px;
+  height: 22px;
 `;
 
 export const TextError = styled.Text`
