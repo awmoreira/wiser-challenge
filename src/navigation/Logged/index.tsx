@@ -8,13 +8,13 @@ import Home from '~/screens/Home';
 const Auth = createStackNavigator();
 
 const noHeader = {
-  headerShown: false,
+    headerShown: false,
 };
 
 const Unlogged: React.FC = () => (
-  <Auth.Navigator initialRouteName={Routes.HOME}>
-    <Auth.Screen name={Routes.HOME} component={Home} options={noHeader} />
-  </Auth.Navigator>
+    <Auth.Navigator initialRouteName={Routes.HOME}>
+        <Auth.Screen name={Routes.HOME} component={Home} options={noHeader} />
+    </Auth.Navigator>
 );
 
 export default Unlogged;

@@ -8,7 +8,7 @@ import SignIn from '~/screens/SignIn';
 const Auth = createStackNavigator();
 
 const noHeader = {
-  headerShown: false,
+    headerShown: false,
 };
 
 // const transparentHeader = {
@@ -20,9 +20,13 @@ const noHeader = {
 // };
 
 const Unlogged: React.FC = () => (
-  <Auth.Navigator initialRouteName={Routes.SIGN_IN}>
-    <Auth.Screen name={Routes.SIGN_IN} component={SignIn} options={noHeader} />
-  </Auth.Navigator>
+    <Auth.Navigator initialRouteName={Routes.SIGN_IN}>
+        <Auth.Screen
+            name={Routes.SIGN_IN}
+            component={SignIn}
+            options={noHeader}
+        />
+    </Auth.Navigator>
 );
 
 export default Unlogged;

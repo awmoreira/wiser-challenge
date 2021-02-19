@@ -18,84 +18,89 @@ import AuthActions from '~/store/ducks/auth/actions';
 import {RootState} from '~/store/ducks/rootReducer';
 
 const SignIn: React.FC = () => {
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
-  const {loading, error} = useSelector((state: RootState) => state.auth);
-  const emailRef = useRef();
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+    const {loading, error} = useSelector((state: RootState) => state.auth);
+    const emailRef = useRef();
 
-  React.useEffect(() => {
-    if (error) {
-      Toast.show({
-        type: 'error',
-        text1: 'Erro',
-        text2: 'Usuário ou senha inválidos... 👋',
-        visibilityTime: 4000,
-        autoHide: true,
-        topOffset: 50,
-        bottomOffset: 40,
-      });
-    }
-  }, [error]);
+    React.useEffect(() => {
+        if (error) {
+            Toast.show({
+                type: 'error',
+                text1: 'Erro',
+                text2: 'Usuário ou senha inválidos... 👋',
+                visibilityTime: 4000,
+                autoHide: true,
+                topOffset: 50,
+                bottomOffset: 40,
+            });
+        }
+    }, [error]);
 
-  return (
-    <Container>
-      <Formik
-        initialValues={{email: '', password: ''} as Types}
-        onSubmit={(values: Types) => {
-          dispatch(AuthActions.signInRequest(values));
-        }}
-        validationSchema={validationSchema}>
-        {({values, handleChange, handleSubmit, errors, touched}) => (
-          <>
-            <Title>Olá, seja bem-vindo!</Title>
-            <SubTitle>Para acessar a plataforma, faça seu login.</SubTitle>
-            <Input
-              ref={emailRef}
-              iconVisible={errors.email ? Images.Close : null}
-              typeMask="custom"
-              label="E-mail"
-              touched={!!touched.email || !!values.email}
-              placeholder="user.name@mail.com"
-              errors={errors.email}
-              keyboardType="email-address"
-              onChangeText={handleChange('email')}
-              value={values.email}
-              typeInput={errors.email ? 'tertiary' : 'primary'}
-            />
-            <Input
-              typeMask="custom"
-              label="Senha"
-              touched={!!touched.password || !!values.password}
-              placeholder="******"
-              errors={errors.password}
-              secureTextEntry
-              onChangeText={handleChange('password')}
-              value={values.password}
-              typeInput={errors.email ? 'tertiary' : 'primary'}
-            />
+    return (
+        <Container>
+            <Formik
+                initialValues={{email: '', password: ''} as Types}
+                onSubmit={(values: Types) => {
+                    dispatch(AuthActions.signInRequest(values));
+                }}
+                validationSchema={validationSchema}>
+                {({values, handleChange, handleSubmit, errors, touched}) => (
+                    <>
+                        <Title>Olá, seja bem-vindo!</Title>
+                        <SubTitle>
+                            Para acessar a plataforma, faça seu login.
+                        </SubTitle>
+                        <Input
+                            ref={emailRef}
+                            iconVisible={errors.email ? Images.Close : null}
+                            typeMask="custom"
+                            label="E-mail"
+                            touched={!!touched.email || !!values.email}
+                            placeholder="user.name@mail.com"
+                            errors={errors.email}
+                            keyboardType="email-address"
+                            onChangeText={handleChange('email')}
+                            value={values.email}
+                            typeInput={errors.email ? 'tertiary' : 'primary'}
+                        />
+                        <Input
+                            typeMask="custom"
+                            label="Senha"
+                            touched={!!touched.password || !!values.password}
+                            placeholder="******"
+                            errors={errors.password}
+                            secureTextEntry
+                            onChangeText={handleChange('password')}
+                            value={values.password}
+                            typeInput={errors.email ? 'tertiary' : 'primary'}
+                        />
 
-            {loading ? (
-              <Loading />
-            ) : (
-              <Button
-                type="primary"
-                fontsize={16}
-                description="Entrar"
-                onPress={handleSubmit}
-                shadow
-              />
-            )}
+                        {loading ? (
+                            <Loading />
+                        ) : (
+                            <Button
+                                type="primary"
+                                fontsize={16}
+                                description="Entrar"
+                                onPress={handleSubmit}
+                                shadow
+                            />
+                        )}
 
-            <Toast ref={(ref) => Toast.setRef(ref)} />
+                        <Toast ref={(ref) => Toast.setRef(ref)} />
 
-            <TextButton onPress={() => navigation.navigate(Routes.UNLOGGED)}>
-              Esqueceu seu login ou senha?
-            </TextButton>
-          </>
-        )}
-      </Formik>
-    </Container>
-  );
+                        <TextButton
+                            onPress={() =>
+                                navigation.navigate(Routes.UNLOGGED)
+                            }>
+                            Esqueceu seu login ou senha?
+                        </TextButton>
+                    </>
+                )}
+            </Formik>
+        </Container>
+    );
 };
 
 export default SignIn;
